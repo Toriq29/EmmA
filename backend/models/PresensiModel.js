@@ -21,12 +21,9 @@ const Presensi = db.define('presensi', {
             notEmpty: true
         }
     },
-    lokasi_presensi: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true
-        }
+    tanggal: {
+        type: DataTypes.DATE,
+        allowNull: false
     },
     waktu_masuk: {
         type: DataTypes.TIME,
@@ -35,16 +32,13 @@ const Presensi = db.define('presensi', {
     waktu_keluar: {
         type: DataTypes.TIME,
         allowNull: true
-    },
-    tanggal: {
-        type: DataTypes.DATE,
-        allowNull: false
     }
+
 }, {
     freezeTableName: true
 });
 
-// Relasi antara Karyawan dan Presensi
+
 Karyawan.hasMany(Presensi, { foreignKey: 'karyawan_id' });
 Presensi.belongsTo(Karyawan, { foreignKey: 'karyawan_id' });
 

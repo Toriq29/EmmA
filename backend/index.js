@@ -5,13 +5,18 @@ import dotenv from "dotenv";
 import db from "./config/Database.js"
 import KaryawanRoute from "./routes/KaryawanRoute.js"
 import PresensiRoute from "./routes/PresensiRoute.js"
+import IzinCuti from "./models/IzinCutiModel.js";
 
 dotenv.config();
 
 const app = express();
 
 (async()=>{
-    await db.sync();
+    await db.sync()
+    .then(() => {
+        console.log("Database & tables created!");
+    })
+    .catch((error) => console.error("Error creating database & tables: ", error));;
 })();
 
 app.use(session({
