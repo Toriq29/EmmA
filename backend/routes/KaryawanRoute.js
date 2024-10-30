@@ -1,7 +1,7 @@
 import express from "express";
 import {
     getKaryawan,
-    getKaryawanByKaryawan_id,
+    getKaryawanById,
     createKaryawan,
     updateKaryawan,
     deleteKaryawan
@@ -11,9 +11,9 @@ const router = express.Router();
 
 
 router.get('/karyawan', getKaryawan);
-router.get('/karyawan/:karyawan_id', getKaryawanByKaryawan_id);
+router.get('/karyawan/:id', getKaryawanById);
 router.post('/karyawan', createKaryawan);
-router.patch('/karyawan/:karyawan_id', updateKaryawan);
-router.delete('/karyawan/:karyawan_id', deleteKaryawan);
+router.patch('/karyawan/:id', updateKaryawan);
+router.delete('/karyawan/:id', deleteKaryawan);
 
 export default router;

@@ -4,14 +4,10 @@ import db from "../config/Database.js";
 const { DataTypes } = Sequelize;
 
 const Jabatan = db.define('jabatan', {
-    jabatan_id: {
-        type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-        validate: {
-            notEmpty: true
-        }
     },
     nama_jabatan: {
         type: DataTypes.STRING,

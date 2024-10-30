@@ -7,11 +7,15 @@ import Departemen from "./DepartemenModel.js";
 const { DataTypes } = Sequelize;
 
 const Karyawan = db.define('karyawan', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
     karyawan_id: {
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primaryKey: true,
         validate: {
             notEmpty: true
         }
@@ -55,16 +59,28 @@ const Karyawan = db.define('karyawan', {
         allowNull: false
     },
     jabatan_id: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Jabatan,
+            key: 'id'
+        }
     },
     golongan_id: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Golongan,
+            key: 'id'
+        }
     },
     departemen_id: {
-        type: DataTypes.STRING,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Departemen,
+            key: 'id'
+        }
     },
     status_karyawan: {
         type: DataTypes.ENUM('aktif', 'nonaktif'),
@@ -75,11 +91,11 @@ const Karyawan = db.define('karyawan', {
     freezeTableName: true
 });
 
-Golongan.hasMany(Karyawan, { foreignKey: 'golongan_id' });
-Karyawan.belongsTo(Golongan, { foreignKey: 'golongan_id' });
-
 Jabatan.hasMany(Karyawan, { foreignKey: 'jabatan_id' });
 Karyawan.belongsTo(Jabatan, { foreignKey: 'jabatan_id' });
+
+Golongan.hasMany(Karyawan, { foreignKey: 'golongan_id' });
+Karyawan.belongsTo(Golongan, { foreignKey: 'golongan_id' });
 
 Departemen.hasMany(Karyawan, { foreignKey: 'departemen_id' });
 Karyawan.belongsTo(Departemen, { foreignKey: 'departemen_id' });

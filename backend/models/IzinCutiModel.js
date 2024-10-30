@@ -5,20 +5,17 @@ import Karyawan from "./KaryawanModel.js";
 const { DataTypes } = Sequelize;
 
 const IzinCuti = db.define('izin_cuti', {
-    izin_cuti_id: {
-        type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-        validate: {
-            notEmpty: true
-        }
     },
     karyawan_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-            notEmpty: true
+        references: {
+            model: Karyawan,
+            key: 'id'
         }
     },
     tanggal_mulai: {

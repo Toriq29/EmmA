@@ -5,20 +5,17 @@ import Karyawan from "./KaryawanModel.js";
 const { DataTypes } = Sequelize;
 
 const Presensi = db.define('presensi', {
-    presensi_id: {
-        type: DataTypes.STRING,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
         primaryKey: true,
-        validate: {
-            notEmpty: true
-        }
     },
     karyawan_id: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
-        validate: {
-            notEmpty: true
+        references: {
+            model: Karyawan,
+            key: 'id'
         }
     },
     tanggal: {
