@@ -8,6 +8,7 @@ import PresensiRoute from "./routes/PresensiRoute.js"
 import JabatanRoute from "./routes/JabatanRoute.js"
 import GolonganRoute from "./routes/GolonganRoute.js"
 import DepartemenRoute from "./routes/DepartemenRoute.js"
+import AuthRoute from "./routes/AuthRoute.js"
 import IzinCuti from "./models/IzinCutiModel.js";
 
 dotenv.config();
@@ -42,6 +43,7 @@ app.use(PresensiRoute);
 app.use(JabatanRoute);
 app.use(GolonganRoute);
 app.use(DepartemenRoute);
+app.use(AuthRoute);
 
 app.listen(process.env.APP_PORT, () => {
     console.log('server up an running....')
