@@ -1,8 +1,21 @@
 import React from 'react'
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { IoPerson, IoHome, IoLogOut, IoCheckmarkCircleOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from 'react-redux';
+import { LogOut, reset } from "../features/authSlice";
 
 const Sidebar = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {karyawan} = useSelector((state) => state.auth);
+    
+    const logout = () => {
+        dispatch(LogOut());
+        dispatch(reset());
+        navigate("/");
+    }
+
     return (
         <div>
             <aside className="menu pl-2 has-shadow">
@@ -17,7 +30,7 @@ const Sidebar = () => {
                 </ul>
                 <p className="menu-label">Pengaturan</p>
                 <ul className="menu-list">
-                    <li><button className="button is-white"><IoLogOut/> Logout</button></li>
+                    <li><button onClick={logout} className="button is-white"><IoLogOut/> Logout</button></li>
                 </ul>
             </aside>
         </div>
