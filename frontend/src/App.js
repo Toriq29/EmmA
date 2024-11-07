@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import Karyawan from "./pages/Karyawan";
 import AddKaryawan from "./pages/AddKaryawan";
 import EditKaryawan from "./pages/EditKaryawan";
+import Presensi from "./pages/Presensi";
 
 function App() {
   return <div>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/karyawan" element={<Karyawan />} />
         <Route path="/karyawan/add" element={<AddKaryawan />} />
         <Route path="/karyawan/edit/:id" element={<EditKaryawan />} />
+        <Route path="/presensi" element={<Presensi />} />
       </Routes>
     </BrowserRouter>
   </div>;

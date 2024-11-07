@@ -1,14 +1,14 @@
-import React, { useEffect } from 'react'
-import Layout from './Layout'
-import Welcome from "../components/Welcome"
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { getMe } from '../features/authSlice'
+import React, { useEffect } from 'react';
+import Layout from './Layout';
+import Welcome from "../components/Welcome";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getMe } from '../features/authSlice';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state => state.auth))
+  const { isError } = useSelector((state => state.auth));
 
   useEffect(() => {
     dispatch(getMe());
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/")
+      navigate("/");
     }
   }, [isError, navigate]);
 
@@ -27,4 +27,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Dashboard;

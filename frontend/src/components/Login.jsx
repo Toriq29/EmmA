@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { LoginKaryawan, reset } from "../features/authSlice";
+import { LoginKaryawan, reset, getMe } from "../features/authSlice";
 
 
 const Login = () => {
@@ -12,6 +12,11 @@ const Login = () => {
     const { karyawan, isError, isSuccess, isLoading, message } = useSelector(
         (state) => state.auth
     );
+
+    useEffect(() => {
+        dispatch(getMe());
+    }, [dispatch]);
+
 
     useEffect(() => {
         if (karyawan || isSuccess) {
@@ -33,8 +38,9 @@ const Login = () => {
                     <div className="columns is-centered">
                         <div className="column is-4">
                             <form onSubmit={Auth} className='box'>
-                                {isError && <p className='has-text-centered' >{message}</p>}
-                                <h1 className='title is-2'>Sign In</h1>
+                                <h1 className='title is-1 has-text-centered'>EmmA.</h1>
+                                <h2 className='title is-3'>Sign In</h2>
+
                                 <div className="field">
                                     <label className="label">Username</label>
                                     <div className="control">
@@ -50,6 +56,7 @@ const Login = () => {
                                 <div className="field mt-5">
                                     <button type="submit" className="button is-success is-fullwidth">{isLoading ? 'Loading...' : "Login"}</button>
                                 </div>
+                                {isError && <p className='has-text-centered mb-1' >{message}</p>}
                             </form>
                         </div>
                     </div>
@@ -59,4 +66,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

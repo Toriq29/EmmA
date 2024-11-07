@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const Karyawanlist = () => {
+    const [ listKaryawan, setListKaryawan ] = useState([]);
+
+    useEffect(() => {
+        getListKaryawan();
+    }, [])
+
+    const getListKaryawan = async () => {
+        const response = await axios.get("http://localhost:5000/karyawan");
+        setListKaryawan(response.data)
+    };
+
+    const deleteKaryawan = async (karyawan_id) => {
+        await axios.delete(`http://localhost:5000/karyawan/${karyawan_id}`);
+        getListKaryawan();
+    }
+
     return (
         <div>
             <h1 className='title' style={{ color: "black" }}>Karyawan</h1>
@@ -21,18 +40,27 @@ const Karyawanlist = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    {listKaryawan.map((karyawan, index) => (
+                        <tr key={karyawan.karyawan_id}>
+                            <td>{index + 1}</td>
+                            <td>{karyawan.nama_lengkap}</td>
+                            <td>{karyawan.username}</td>
+                            <td>{karyawan.email}</td>
+                            <td>{karyawan.no_telp}</td>
+                            <td>{new Date(karyawan.tanggal_mulai_kerja).toLocaleDateString()}</td>
+                            <td>{karyawan.jabatan_id}</td>
+                            <td>{karyawan.golongan_id}</td>
+                            <td>{karyawan.departemen_id}</td>
+                            <td>{karyawan.status_karyawan}</td>
+                            <td>
+                                <Link to={`/karyawan/edit/${karyawan.karyawan_id}`} className='button is-small is-info'>Edit</Link>
+                                <button onClick={() => deleteKaryawan(karyawan.karyawan_id)} className='button is-small is-danger ml-2'>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))};
+
                 </tbody>
             </table>
         </div>
