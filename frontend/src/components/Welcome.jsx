@@ -6,7 +6,6 @@ const Welcome = () => {
   return (
     <div>
         <h1 className='title' style={{color: "black"}}>Dashboard</h1>
-        <tr></tr>
         <h2 className='subtitle' style={{color: "black"}}>Welcome Back <b>{karyawan && karyawan.nama_lengkap}</b></h2>
     </div>
   )

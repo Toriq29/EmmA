@@ -16,7 +16,6 @@ const Karyawan = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log(karyawan);
     if (isError) {
       navigate("/");
     }
