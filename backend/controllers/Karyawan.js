@@ -50,7 +50,7 @@ export const getKaryawanById = async(req, res) => {
 }
 
 export const createKaryawan = async(req, res) => {
-    // console.log(req.body)
+    
     const {nama_lengkap, 
         username, password, 
         confPassword, email, 

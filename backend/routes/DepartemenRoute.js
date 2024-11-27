@@ -5,13 +5,14 @@ import {
     updateDepartemen,
     deleteDepartemen
 } from "../controllers/Departemen.js";
+import { verifyKarywan, adminOnly } from "../middleware/AuthKaryawan.js"
 
 const router = express.Router();
 
 
-router.get('/Departemen', getDepartemen);
-router.post('/Departemen', createDepartemen);
-router.patch('/Departemen/:id', updateDepartemen);
-router.delete('/Departemen/:id', deleteDepartemen);
+router.get('/departemen', verifyKarywan, adminOnly, getDepartemen);
+router.post('/departemen', verifyKarywan, adminOnly, createDepartemen);
+router.patch('/departemen/:id', verifyKarywan, adminOnly, updateDepartemen);
+router.delete('/departemen/:id', verifyKarywan, adminOnly, deleteDepartemen);
 
 export default router;

@@ -5,13 +5,14 @@ import {
     updateGolongan,
     deleteGolongan
 } from "../controllers/Golongan.js";
+import { verifyKarywan, adminOnly } from "../middleware/AuthKaryawan.js"
 
 const router = express.Router();
 
 
-router.get('/Golongan', getGolongan);
-router.post('/Golongan', createGolongan);
-router.patch('/Golongan/:id', updateGolongan);
-router.delete('/Golongan/:id', deleteGolongan);
+router.get('/golongan', verifyKarywan, adminOnly, getGolongan);
+router.post('/golongan', verifyKarywan, adminOnly, createGolongan);
+router.patch('/golongan/:id', verifyKarywan, adminOnly, updateGolongan);
+router.delete('/golongan/:id', verifyKarywan, adminOnly, deleteGolongan);
 
 export default router;
