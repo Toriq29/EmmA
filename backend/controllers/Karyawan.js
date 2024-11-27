@@ -61,6 +61,7 @@ export const createKaryawan = async(req, res) => {
         departemen_id, 
         status_karyawan
     } = req.body;
+    
     if(password != confPassword) return res.status(400).json({msg: "Password dan Confirm Password tidak cocok"});
     const hashPassword = await argon2.hash(password);
     try {
