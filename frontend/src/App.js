@@ -5,7 +5,9 @@ import Karyawan from "./pages/Karyawan";
 import AddKaryawan from "./pages/AddKaryawan";
 import EditKaryawan from "./pages/EditKaryawan";
 import Presensi from "./pages/Presensi";
-
+import Jabatan from "./pages/Jabatan";
+import AddJabatan from "./pages/AddJabatan"
+ 
 function App() {
   return <div>
     <BrowserRouter>
@@ -16,6 +18,8 @@ function App() {
         <Route path="/karyawan/add" element={<AddKaryawan />} />
         <Route path="/karyawan/edit/:id" element={<EditKaryawan />} />
         <Route path="/presensi" element={<Presensi />} />
+        <Route path="/jabatan" element={<Jabatan />} />
+        <Route path="/jabatan/add" element={<AddJabatan />} />
       </Routes>
     </BrowserRouter>
   </div>;

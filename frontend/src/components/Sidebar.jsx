@@ -29,6 +29,9 @@ const Sidebar = () => {
                         <ul className="menu-list">
                             <li><NavLink to="/karyawan"><IoPerson /> Karyawan</NavLink></li>
                         </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to="/jabatan"><IoPerson /> Jabatan</NavLink></li>
+                        </ul>
                     </div>
                 )}
 
