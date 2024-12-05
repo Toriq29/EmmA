@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -16,6 +16,16 @@ const FormAddKaryawan = () => {
     const [statusKaryawan, setStatusKaryawan] = useState("")
     const [msg, setMsg] = useState("")
     const navigate = useNavigate();
+
+    const [listJabatan, setListJabatan] = useState([]);
+    const [listGolongan, setListGolongan] = useState([]);
+    const [listDepartemen, setListDepartemen] = useState([]);
+
+    useEffect(() => {
+        getListJabatan();
+        getListGolongan();
+        getListDepartemen();
+    }, []);
 
     const saveKaryawan = async (e) => {
         e.preventDefault();
@@ -35,12 +45,39 @@ const FormAddKaryawan = () => {
             })
             navigate("/karyawan")
         } catch (error) {
-            if(error.response){
+            if (error.response) {
                 setMsg(error.response.data.msg)
             }
         }
 
     }
+
+    const getListJabatan = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/jabatan");
+            setListJabatan(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
+    const getListGolongan = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/golongan");
+            setListGolongan(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
+    const getListDepartemen = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/departemen");
+            setListDepartemen(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
 
     return (
         <div>
@@ -97,8 +134,12 @@ const FormAddKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={jabatan} onChange={(e) => setJabatan(e.target.value)}>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Karyawan</option>
+                                            <option value=""> --- </option>
+                                            {listJabatan.map((jabatan) => {
+                                                return (
+                                                    <option key={jabatan.id} value={jabatan.id} >{jabatan.nama_jabatan}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -108,8 +149,12 @@ const FormAddKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={golongan} onChange={(e) => setGolongan(e.target.value)}>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Grade 1</option>
+                                            <option value=""> --- </option>
+                                            {listGolongan.map((golongan) => {
+                                                return (
+                                                    <option key={golongan.id} value={golongan.id} >{golongan.nama_golongan}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -119,8 +164,12 @@ const FormAddKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={departemen} onChange={(e) => setDepartemen(e.target.value)}>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Cyber Security</option>
+                                            <option value=""> --- </option>
+                                            {listDepartemen.map((departemen) => {
+                                                return (
+                                                    <option key={departemen.id} value={departemen.id} >{departemen.nama_departemen}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -130,6 +179,7 @@ const FormAddKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={statusKaryawan} onChange={(e) => setStatusKaryawan(e.target.value)}>
+                                            <option value=""> --- </option>
                                             <option value="aktif">Aktif</option>
                                             <option value="nonaktif">Non Aktif</option>
                                         </select>

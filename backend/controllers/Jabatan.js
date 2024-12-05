@@ -14,6 +14,24 @@ export const getJabatan = async(req, res) => {
     }
 }
 
+export const getJabatanWithJabatanId = async(req, res) => {
+    try {
+        const response = await Jabatan.findOne({
+            attributes: [
+                "id", 
+                "nama_jabatan",
+            ],
+            where: {
+                id: req.params.id
+            }
+        }
+    )
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({msg: error.message})
+    }
+}
+
 export const createJabatan = async(req, res) => {
     const {
         id, 

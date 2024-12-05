@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Karyawanlist = () => {
     const [listKaryawan, setListKaryawan] = useState([]);
+    const [jabatan, setJabatan] = useState([]);
 
     useEffect(() => {
         getListKaryawan();
@@ -13,6 +14,15 @@ const Karyawanlist = () => {
         try {
             const response = await axios.get("http://localhost:5000/karyawan");
             setListKaryawan(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
+    const getJabatanWithJabatanId = async (id) => {
+        try {
+            const response = await axios.get(`http://localhost:5000/jabatan/${id}`);
+            setJabatan(response.data);
         } catch (error) {
             console.error("Failed to fetch data:", error);
         }
@@ -50,7 +60,6 @@ const Karyawanlist = () => {
                 </thead>
                 <tbody>
                     {listKaryawan.map((karyawan, index) => (
-                        
                         <tr key={karyawan.karyawan_id}>
                             <td>{index + 1}</td>
                             <td>{karyawan.nama_lengkap}</td>

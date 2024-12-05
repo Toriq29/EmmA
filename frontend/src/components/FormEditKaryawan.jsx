@@ -19,6 +19,10 @@ const FormEditKaryawan = () => {
     const navigate = useNavigate();
     const { id } = useParams()
 
+    const [listJabatan, setListJabatan] = useState([]);
+    const [listGolongan, setListGolongan] = useState([]);
+    const [listDepartemen, setListDepartemen] = useState([]);
+
     useEffect(() => {
         const getKaryawanByKaryawanId = async () => {
             try {
@@ -39,6 +43,10 @@ const FormEditKaryawan = () => {
             }
         }
         getKaryawanByKaryawanId()
+        getListJabatan();
+        getListGolongan();
+        getListDepartemen();
+        
     }, [id])
 
     const updateKaryawan = async (e) => {
@@ -65,6 +73,34 @@ const FormEditKaryawan = () => {
         }
 
     }
+
+    const getListJabatan = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/jabatan");
+            setListJabatan(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
+    const getListGolongan = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/golongan");
+            setListGolongan(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+    };
+
+    const getListDepartemen = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/departemen");
+            setListDepartemen(response.data);
+        } catch (error) {
+            console.error("Failed to fetch data:", error);
+        }
+
+    }    
     return (
         <div>
             <h1 className='title' style={{ color: "black" }}>Karyawan</h1>
@@ -125,8 +161,11 @@ const FormEditKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={jabatan} onChange={(e) => setJabatan(e.target.value)}>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Karyawan</option>
+                                            {listJabatan.map((jabatan) => {
+                                                return (
+                                                    <option key={jabatan.id} value={jabatan.id} >{jabatan.nama_jabatan}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -136,8 +175,11 @@ const FormEditKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={golongan} onChange={(e) => setGolongan(e.target.value)}>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Grade 1</option>
+                                            {listGolongan.map((golongan) => {
+                                                return (
+                                                    <option key={golongan.id} value={golongan.id} >{golongan.nama_golongan}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                 </div>
@@ -147,8 +189,11 @@ const FormEditKaryawan = () => {
                                 <div className="control">
                                     <div className="select is-fullwidth">
                                         <select value={departemen} onChange={(e) => setDepartemen(e.target.value)}>
-                                            <option value="1">Admin</option>
-                                            <option value="2">Cyber Security</option>
+                                            {listDepartemen.map((departemen) => {
+                                                return (
+                                                    <option key={departemen.id} value={departemen.id} >{departemen.nama_departemen}</option>
+                                                )
+                                            })}
                                         </select>
                                     </div>
                                 </div>

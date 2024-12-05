@@ -7,6 +7,10 @@ import EditKaryawan from "./pages/EditKaryawan";
 import Presensi from "./pages/Presensi";
 import Jabatan from "./pages/Jabatan";
 import AddJabatan from "./pages/AddJabatan"
+import Golongan from "./pages/Golongan";
+import AddGolongan from "./pages/AddGolongan";
+import Departemen from "./pages/Departemen";
+import AddDepartemen from "./pages/AddDepartemen";
  
 function App() {
   return <div>
@@ -20,6 +24,10 @@ function App() {
         <Route path="/presensi" element={<Presensi />} />
         <Route path="/jabatan" element={<Jabatan />} />
         <Route path="/jabatan/add" element={<AddJabatan />} />
+        <Route path="/golongan" element={<Golongan />} />
+        <Route path="/golongan/add" element={<AddGolongan />} />
+        <Route path="/departemen" element={<Departemen />} />
+        <Route path="/departemen/add" element={<AddDepartemen />} />
       </Routes>
     </BrowserRouter>
   </div>;
