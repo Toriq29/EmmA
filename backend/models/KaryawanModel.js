@@ -86,6 +86,10 @@ const Karyawan = db.define('karyawan', {
         type: DataTypes.ENUM('aktif', 'nonaktif'),
         allowNull: false
     },
+    photo: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
 
 }, {
     freezeTableName: true

@@ -11,6 +11,7 @@ import Golongan from "./pages/Golongan";
 import AddGolongan from "./pages/AddGolongan";
 import Departemen from "./pages/Departemen";
 import AddDepartemen from "./pages/AddDepartemen";
+import Photo from "./pages/Photo";
  
 function App() {
   return <div>
@@ -28,6 +29,7 @@ function App() {
         <Route path="/golongan/add" element={<AddGolongan />} />
         <Route path="/departemen" element={<Departemen />} />
         <Route path="/departemen/add" element={<AddDepartemen />} />
+        <Route path="/photo" element={<Photo />} />
       </Routes>
     </BrowserRouter>
   </div>;

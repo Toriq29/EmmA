@@ -47,6 +47,9 @@ const Sidebar = () => {
                         <ul className="menu-list">
                             <li><NavLink to="/presensi"><IoCheckmarkCircleOutline /> Presensi</NavLink></li>
                         </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to="/photo"><IoCheckmarkCircleOutline /> Simpan Foto Presensi</NavLink></li>
+                        </ul>
                     </div>
                 )}
                 
