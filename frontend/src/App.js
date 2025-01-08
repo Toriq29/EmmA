@@ -12,7 +12,13 @@ import AddGolongan from "./pages/AddGolongan";
 import Departemen from "./pages/Departemen";
 import AddDepartemen from "./pages/AddDepartemen";
 import Photo from "./pages/Photo";
- 
+import PresensiKaryawanForSupervisor from "./pages/PresensiKaryawanForSupervisor";
+import PresensiYearKaryawanForSupervisor from "./pages/PresensiYearKaryawanForSupervisor";
+import PresensiForSupervisor from "./pages/PresensiForSupervisor";
+import PresensiSupervisorForManager from "./pages/PresensiSupervisorForManager";
+import Profile from "./pages/Profile";
+
+
 function App() {
   return <div>
     <BrowserRouter>
@@ -30,6 +36,11 @@ function App() {
         <Route path="/departemen" element={<Departemen />} />
         <Route path="/departemen/add" element={<AddDepartemen />} />
         <Route path="/photo" element={<Photo />} />
+        <Route path="/presensiKaryawan" element={<PresensiKaryawanForSupervisor />} />
+        <Route path="/presensiSupervisor" element={<PresensiSupervisorForManager />} />
+        <Route path="/presensiKaryawan/year/:id" element={<PresensiYearKaryawanForSupervisor />} />
+        <Route path="/presensiKaryawan/detail/:id/:year" element={<PresensiForSupervisor />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   </div>;

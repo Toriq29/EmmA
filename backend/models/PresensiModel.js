@@ -19,7 +19,15 @@ const Presensi = db.define('presensi', {
         }
     },
     tanggal: {
-        type: DataTypes.DATE,
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    bulan: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    tahun: {
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     waktu_masuk: {

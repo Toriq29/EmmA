@@ -73,8 +73,8 @@ const Karyawanlist = () => {
                             <td>{karyawan.status_karyawan}</td>
                             <td>
                                 <Link to={`/karyawan/edit/${karyawan.karyawan_id}`} className='button is-small is-info'>Edit</Link>
-                                <button 
-                                    onClick={() => deleteKaryawan(karyawan.karyawan_id)} 
+                                <button
+                                    onClick={() => deleteKaryawan(karyawan.karyawan_id)}
                                     className='button is-small is-danger ml-2'
                                 >
                                     Delete

@@ -1,5 +1,6 @@
 import Karyawan from "../models/KaryawanModel.js";
 import argon2 from "argon2";
+import { Op } from "sequelize";
 
 export const getKaryawan = async (req, res) => {
     try {
@@ -150,6 +151,68 @@ export const deleteKaryawan = async (req, res) => {
         res.status(400).json({ msg: error.message })
     }
 }
+
+export const getKaryawanByDepartement = async (req, res) => {
+    try {
+        const karyawan = await Karyawan.findOne({
+            where: {
+                karyawan_id: req.params.id
+            }
+        });
+
+        if (!karyawan) {
+            return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+        }
+
+        const response = await Karyawan.findAll({
+            attributes: [
+                "karyawan_id",
+                "nama_lengkap"
+            ],
+            where: {
+                [Op.and]: [
+                    { departemen_id: karyawan.departemen_id },
+                    { jabatan_id: 2 }
+                ]
+            }
+        });
+
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+export const getSupervisorByDepartement = async (req, res) => {
+    try {
+        const karyawan = await Karyawan.findOne({
+            where: {
+                karyawan_id: req.params.id
+            }
+        });
+
+        if (!karyawan) {
+            return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+        }
+
+        const response = await Karyawan.findAll({
+            attributes: [
+                "karyawan_id",
+                "nama_lengkap"
+            ],
+            where: {
+                [Op.and]: [
+                    { departemen_id: karyawan.departemen_id },
+                    { jabatan_id: 3 }
+                ]
+            }
+        });
+
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
 
 export const addPhoto = async (req, res) => {
     const karyawan = await Karyawan.findOne({
