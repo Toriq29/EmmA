@@ -4,7 +4,7 @@ import Karyawan from "./KaryawanModel.js";
 
 const { DataTypes } = Sequelize;
 
-const IzinCuti = db.define('izin_cuti', {
+const Cuti = db.define('cuti', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -17,10 +17,6 @@ const IzinCuti = db.define('izin_cuti', {
             model: Karyawan,
             key: 'id'
         }
-    },
-    tipe: {
-        type: DataTypes.ENUM('izin', 'cuti'),
-        allowNull: false
     },
     tanggal_mulai: {
         type: DataTypes.DATE,
@@ -52,7 +48,7 @@ const IzinCuti = db.define('izin_cuti', {
     freezeTableName: true
 });
 
-Karyawan.hasMany(IzinCuti, { foreignKey: 'karyawan_id' });
-IzinCuti.belongsTo(Karyawan, { foreignKey: 'karyawan_id' });
+Karyawan.hasMany(Cuti, { foreignKey: 'karyawan_id' });
+Cuti.belongsTo(Karyawan, { foreignKey: 'karyawan_id' });
 
-export default IzinCuti;
+export default Cuti;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from "react-router-dom"
-import { IoPerson, IoHome, IoLogOut, IoCheckmarkCircleOutline, IoDocumentAttach, IoDocument, IoPeople } from "react-icons/io5";
+import { IoPerson, IoHome, IoLogOut, IoCheckmarkCircleOutline, IoDocumentAttach, IoDocument, IoPeople, IoCalendarClearOutline, IoCalendar, IoPauseCircle, IoCut, IoStop } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux';
 import { LogOut, reset } from "../features/authSlice";
 
@@ -47,7 +47,10 @@ const Sidebar = () => {
                             <li><NavLink to="/presensi"><IoCheckmarkCircleOutline /> Presensi</NavLink></li>
                         </ul>
                         <ul className="menu-list">
-                            <li><NavLink to={`/presensiKaryawan/year/${karyawan.karyawan_id}`} ><IoDocument /> List Presensi</NavLink></li>
+                            <li><NavLink to={`/presensiKaryawan/year/${karyawan.karyawan_id}`} ><IoCalendar /> List Presensi</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/izincuti"} ><IoStop /> Izin dan Cuti</NavLink></li>
                         </ul>
                         {/* <ul className="menu-list">
                             <li><NavLink to="/photo"><IoCheckmarkCircleOutline /> Simpan Foto Presensi</NavLink></li>

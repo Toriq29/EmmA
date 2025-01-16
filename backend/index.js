@@ -10,6 +10,7 @@ import JabatanRoute from "./routes/JabatanRoute.js"
 import GolonganRoute from "./routes/GolonganRoute.js"
 import DepartemenRoute from "./routes/DepartemenRoute.js"
 import AuthRoute from "./routes/AuthRoute.js"
+import IzinCutiRoute from "./routes/IzinCutiRoute.js"
 import IzinCuti from "./models/IzinCutiModel.js";
 
 dotenv.config();
@@ -52,6 +53,7 @@ app.use(JabatanRoute);
 app.use(GolonganRoute);
 app.use(DepartemenRoute);
 app.use(AuthRoute);
+app.use(IzinCutiRoute);
 
 // store.sync();
 
