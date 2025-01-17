@@ -18,6 +18,9 @@ import PresensiForSupervisor from "./pages/PresensiForSupervisor";
 import PresensiSupervisorForManager from "./pages/PresensiSupervisorForManager";
 import Profile from "./pages/Profile";
 import IzinCuti from "./pages/IzinCuti";
+import AddIzinCuti from "./pages/AddIzinCuti"
+import PersetujuanIzinCuti from "./pages/PersetujuanIzinCuti";
+import PersetujuanIzinCutiSupervisor from "./pages/PersetujuanIzinCutiSupervisor";
 
 
 function App() {
@@ -43,6 +46,9 @@ function App() {
         <Route path="/presensiKaryawan/detail/:id/:year" element={<PresensiForSupervisor />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/izincuti" element={<IzinCuti />} />
+        <Route path="/izincuti/add" element={<AddIzinCuti />} />
+        <Route path="/persetujuanIzinCuti" element={<PersetujuanIzinCuti />} />
+        <Route path="/persetujuanIzinCutiSupervisor" element={<PersetujuanIzinCutiSupervisor />} />
       </Routes>
     </BrowserRouter>
   </div>;

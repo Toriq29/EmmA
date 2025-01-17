@@ -2,9 +2,10 @@ import IzinCuti from "../models/IzinCutiModel.js"
 import Karyawan from "../models/KaryawanModel.js";
 import { Op } from "sequelize";
 
-export const createIzin = async (req, res) => {
+export const createIzinCuti = async (req, res) => {
 
-    const { 
+    const {
+        tipe,
         tanggal_mulai,
         tanggal_selesai,
         alasan
@@ -24,7 +25,7 @@ export const createIzin = async (req, res) => {
     try {
         await IzinCuti.create({
             karyawan_id: karyawan.id,
-            tipe:"izin",
+            tipe: tipe,
             tanggal_mulai: tanggal_mulai,
             tanggal_selesai: tanggal_selesai,
             alasan: alasan,
@@ -37,7 +38,7 @@ export const createIzin = async (req, res) => {
 
 export const createCuti = async (req, res) => {
 
-    const { 
+    const {
         tanggal_mulai,
         tanggal_selesai,
         alasan
@@ -57,7 +58,7 @@ export const createCuti = async (req, res) => {
     try {
         await IzinCuti.create({
             karyawan_id: karyawan.id,
-            tipe:"cuti",
+            tipe: "cuti",
             tanggal_mulai: tanggal_mulai,
             tanggal_selesai: tanggal_selesai,
             alasan: alasan,
@@ -153,7 +154,7 @@ export const AcceptIzinCuti = async (req, res) => {
 export const RejectIzinCuti = async (req, res) => {
     try {
         await IzinCuti.update({
-            status: true,
+            status: false,
         }, {
             where: {
                 id: req.params.id
@@ -161,6 +162,187 @@ export const RejectIzinCuti = async (req, res) => {
         }
         );
         res.status(200).json({ msg: "Pengajuan Izin/Cuti Ditolak" })
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+    }
+}
+
+export const getIzinKaryawanByDepartement = async (req, res) => {
+    const karyawan = await Karyawan.findOne({
+        where: {
+            karyawan_id: req.params.karyawan_id
+        }
+    });
+
+    if (!karyawan) {
+        return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+    }
+
+    try {
+        const response = await IzinCuti.findAll({
+            attributes: [
+                "id",
+                "tipe",
+                "tanggal_mulai",
+                "tanggal_selesai",
+                "alasan",
+                "status",
+            ],
+            where: {
+                tipe: "izin",
+            },
+            include: [
+                {
+                    model: Karyawan,
+                    required: true,
+                    attributes: ["nama_lengkap"],
+                    where: {
+                        departemen_id: karyawan.departemen_id,
+                        jabatan_id: 2, // Menambahkan filter jabatan_id di sini
+                    },
+                },
+            ],
+            order: [["id", "DESC"]], // Menambahkan pengurutan descending
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(400).json({ msg: error.message });
+    }
+};
+
+export const getCutiKaryawanByDepartement = async (req, res) => {
+
+    const karyawan = await Karyawan.findOne({
+        where: {
+            karyawan_id: req.params.karyawan_id
+        }
+    });
+
+    if (!karyawan) {
+        return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+    }
+
+    try {
+        const response = await IzinCuti.findAll({
+            attributes: [
+                "id",
+                "tipe",
+                "tanggal_mulai",
+                "tanggal_selesai",
+                "alasan",
+                "status",
+            ],
+            where:{
+                tipe: "cuti",
+            },
+            include: [
+                {
+                    model: Karyawan,
+                    required: true,
+                    attributes: [
+                        "nama_lengkap"
+                    ],
+                    where: {
+                        departemen_id: karyawan.departemen_id,
+                        jabatan_id: 2, // Menambahkan filter jabatan_id di sini
+                    },
+                },
+            ],
+            order: [["id", "DESC"]], // Menambahkan pengurutan descending
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+    }
+}
+
+export const getIzinSupervisorByDepartement = async (req, res) => {
+
+    const karyawan = await Karyawan.findOne({
+        where: {
+            karyawan_id: req.params.karyawan_id
+        }
+    });
+
+    if (!karyawan) {
+        return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+    }
+
+    try {
+        const response = await IzinCuti.findAll({
+            attributes: [
+                "id",
+                "tipe",
+                "tanggal_mulai",
+                "tanggal_selesai",
+                "alasan",
+                "status",
+            ],
+            where:{
+                tipe: "izin",
+            },
+            include: [
+                {
+                    model: Karyawan,
+                    required: true,
+                    attributes: [
+                        "nama_lengkap"
+                    ],
+                    where: {
+                        departemen_id: karyawan.departemen_id,
+                        jabatan_id: 3, // Menambahkan filter jabatan_id di sini
+                    },
+                },
+            ],
+            order: [["id", "DESC"]], // Menambahkan pengurutan descending
+        });
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+    }
+}
+
+export const getCutiSupervisorByDepartement = async (req, res) => {
+
+    const karyawan = await Karyawan.findOne({
+        where: {
+            karyawan_id: req.params.karyawan_id
+        }
+    });
+
+    if (!karyawan) {
+        return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+    }
+
+    try {
+        const response = await IzinCuti.findAll({
+            attributes: [
+                "id",
+                "tipe",
+                "tanggal_mulai",
+                "tanggal_selesai",
+                "alasan",
+                "status",
+            ],
+            where:{
+                tipe: "cuti",
+            },
+            include: [
+                {
+                    model: Karyawan,
+                    required: true,
+                    attributes: [
+                        "nama_lengkap"
+                    ],
+                    where: {
+                        departemen_id: karyawan.departemen_id,
+                        jabatan_id: 3, // Menambahkan filter jabatan_id di sini
+                    },
+                },
+            ],
+            order: [["id", "DESC"]], // Menambahkan pengurutan descending
+        });
+        res.status(200).json(response);
     } catch (error) {
         res.status(400).json({ msg: error.message })
     }

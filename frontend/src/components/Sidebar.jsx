@@ -70,6 +70,12 @@ const Sidebar = () => {
                         <ul className="menu-list">
                             <li><NavLink to="/presensiKaryawan"><IoPeople /> List Presensi Karyawan</NavLink></li>
                         </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/izincuti"} ><IoStop /> Izin dan Cuti</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/persetujuanIzinCuti"} ><IoStop /> Persetujuan Izin dan Cuti Karyawan</NavLink></li>
+                        </ul>
                         {/* <ul className="menu-list">
                             <li><NavLink to="/photo"><IoCheckmarkCircleOutline /> Simpan Foto Presensi</NavLink></li>
                         </ul> */}
@@ -89,6 +95,15 @@ const Sidebar = () => {
                         </ul>
                         <ul className="menu-list">
                             <li><NavLink to="/presensiSupervisor"><IoPeople /> List Presensi Supervisor</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/izincuti"} ><IoStop /> Izin dan Cuti</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/persetujuanIzinCuti"} ><IoStop /> List Izin dan Cuti Karyawan</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/persetujuanIzinCutiSupervisor"} ><IoStop /> Persetujuan List Izin dan Cuti Supervisor</NavLink></li>
                         </ul>
                         {/* <ul className="menu-list">
                             <li><NavLink to="/photo"><IoCheckmarkCircleOutline /> Simpan Foto Presensi</NavLink></li>

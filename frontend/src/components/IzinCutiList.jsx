@@ -34,9 +34,9 @@ const IzinCutiList = () => {
     return (
         <div>
             <h1 className='title' style={{ color: "black" }}>Izin Cuti </h1>
-            <Link to={``} className='button is-small is-info'>Pengajuan Izin atau Cuti</Link>
+            <Link to={`/izincuti/add`} className='button is-small is-info'>Pengajuan Izin atau Cuti</Link>
             <h1 className='title mt-4' style={{ color: "black" }} >List Izin</h1>
-            <table className='table is-striped is-fullwidth mt-4'>
+            <table className='table is-striped is-fullwidth mt-4 mr-3'>
                 <thead>
                     <tr>
                         <th>No</th>
