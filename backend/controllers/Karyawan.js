@@ -213,6 +213,36 @@ export const getSupervisorByDepartement = async (req, res) => {
         res.status(500).json({ msg: error.message });
     }
 };
+export const getManagerByDepartement = async (req, res) => {
+    try {
+        const karyawan = await Karyawan.findOne({
+            where: {
+                karyawan_id: req.params.id
+            }
+        });
+
+        if (!karyawan) {
+            return res.status(404).json({ msg: "Karyawan tidak ditemukan" });
+        }
+
+        const response = await Karyawan.findAll({
+            attributes: [
+                "karyawan_id",
+                "nama_lengkap"
+            ],
+            where: {
+                [Op.and]: [
+                    { departemen_id: karyawan.departemen_id },
+                    { jabatan_id: 4 }
+                ]
+            }
+        });
+
+        res.status(200).json(response);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
 
 export const addPhoto = async (req, res) => {
     const karyawan = await Karyawan.findOne({

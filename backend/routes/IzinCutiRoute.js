@@ -9,7 +9,9 @@ import {
     getIzinKaryawanByDepartement,
     getCutiKaryawanByDepartement,
     getIzinSupervisorByDepartement,
-    getCutiSupervisorByDepartement
+    getCutiSupervisorByDepartement,
+    getIzinManagerByDepartement,
+    getCutiManagerByDepartement
 
 } from "../controllers/IzinCuti.js";
 import { verifyKarywan, adminOnly } from "../middleware/AuthKaryawan.js"
@@ -26,6 +28,8 @@ router.get('/izinKaryawanbyDepartemen/:karyawan_id', getIzinKaryawanByDepartemen
 router.get('/cutiKaryawanbyDepartemen/:karyawan_id', getCutiKaryawanByDepartement);
 router.get('/izinSupervisorbyDepartemen/:karyawan_id', getIzinSupervisorByDepartement);
 router.get('/cutiSupervisorbyDepartemen/:karyawan_id', getCutiSupervisorByDepartement);
+router.get('/izinManagerbyDepartemen/:karyawan_id', getIzinManagerByDepartement);
+router.get('/cutiManagerbyDepartemen/:karyawan_id', getCutiManagerByDepartement);
 
 
 

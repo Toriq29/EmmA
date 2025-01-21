@@ -21,6 +21,8 @@ import IzinCuti from "./pages/IzinCuti";
 import AddIzinCuti from "./pages/AddIzinCuti"
 import PersetujuanIzinCuti from "./pages/PersetujuanIzinCuti";
 import PersetujuanIzinCutiSupervisor from "./pages/PersetujuanIzinCutiSupervisor";
+import PresensiManagerForHRD from "./pages/PresensiManagerForHRD";
+import PersetujuanIzinCutiManager from "./pages/PersetujuanIzinCutiManager";
 
 
 function App() {
@@ -42,6 +44,7 @@ function App() {
         <Route path="/photo" element={<Photo />} />
         <Route path="/presensiKaryawan" element={<PresensiKaryawanForSupervisor />} />
         <Route path="/presensiSupervisor" element={<PresensiSupervisorForManager />} />
+        <Route path="/presensiManager" element={<PresensiManagerForHRD />} />
         <Route path="/presensiKaryawan/year/:id" element={<PresensiYearKaryawanForSupervisor />} />
         <Route path="/presensiKaryawan/detail/:id/:year" element={<PresensiForSupervisor />} />
         <Route path="/profile" element={<Profile />} />
@@ -49,6 +52,7 @@ function App() {
         <Route path="/izincuti/add" element={<AddIzinCuti />} />
         <Route path="/persetujuanIzinCuti" element={<PersetujuanIzinCuti />} />
         <Route path="/persetujuanIzinCutiSupervisor" element={<PersetujuanIzinCutiSupervisor />} />
+        <Route path="/persetujuanIzinCutiManager" element={<PersetujuanIzinCutiManager />} />
       </Routes>
     </BrowserRouter>
   </div>;

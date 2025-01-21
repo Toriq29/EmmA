@@ -9,6 +9,7 @@ import {
     getPhotoById,
     getKaryawanByDepartement,
     getSupervisorByDepartement,
+    getManagerByDepartement
 
 } from "../controllers/Karyawan.js";
 import { verifyKarywan, adminOnly } from "../middleware/AuthKaryawan.js"
@@ -25,6 +26,7 @@ router.get('/karyawan/photo/:id', verifyKarywan, getPhotoById);
 router.patch('/karyawan/add_photo/:id', verifyKarywan, addPhoto);
 router.post('/karyawanByDepartement/:id', verifyKarywan, getKaryawanByDepartement);
 router.post('/supervisorByDepartement/:id', verifyKarywan, getSupervisorByDepartement);
+router.post('/managerByDepartement/:id', verifyKarywan, getManagerByDepartement);
 
 
 export default router;

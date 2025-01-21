@@ -110,6 +110,41 @@ const Sidebar = () => {
                         </ul> */}
                     </div>
                 )}
+                {karyawan && karyawan.jabatan_id === 5 && (
+                    <div>
+                        <p className="menu-label">Human Resource Development</p>
+                        <ul className="menu-list">
+                            <li><NavLink to="/presensi"><IoCheckmarkCircleOutline /> Presensi</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={`/presensiKaryawan/year/${karyawan.karyawan_id}`} ><IoDocument /> List Presensi</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to="/presensiKaryawan"><IoPeople /> List Presensi Karyawan</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to="/presensiSupervisor"><IoPeople /> List Presensi Supervisor</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to="/presensiManager"><IoPeople /> List Presensi Manager</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/izincuti"} ><IoStop /> Izin dan Cuti</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/persetujuanIzinCuti"} ><IoStop /> List Izin dan Cuti Karyawan</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/persetujuanIzinCutiSupervisor"} ><IoStop /> List Izin dan Cuti Supervisor</NavLink></li>
+                        </ul>
+                        <ul className="menu-list">
+                            <li><NavLink to={"/persetujuanIzinCutiManager"} ><IoStop />Persetujuan List Izin dan Cuti Manager</NavLink></li>
+                        </ul>
+                        {/* <ul className="menu-list">
+                            <li><NavLink to="/photo"><IoCheckmarkCircleOutline /> Simpan Foto Presensi</NavLink></li>
+                        </ul> */}
+                    </div>
+                )}
 
                 <p className="menu-label">Pengaturan</p>
                 <ul className="menu-list">
