@@ -53,7 +53,7 @@ const PersetujuanIzinCutiListManager = () => {
 
     return (
         <div>
-            <h1 className='title' style={{ color: "black" }}>Persetuan Izin dan Cuti Supervisor</h1>
+            <h1 className='title' style={{ color: "black" }}>Persetuan Izin dan Cuti Manager</h1>
             <h1 className='title mt-4' style={{ color: "black" }} >List Izin</h1>
             <table className='table is-striped is-fullwidth mt-4 mr-3'>
                 <thead>

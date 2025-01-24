@@ -46,7 +46,6 @@ const DepartemenList = () => {
                             <td>{index + 1}</td>
                             <td>{departemen.nama_departemen}</td>
                             <td>
-                                <Link to={``} className='button is-small is-info'>Edit</Link>
                                 <button 
                                     onClick={() => deleteDepartemen(departemen.id)} 
                                     className='button is-small is-danger ml-2'

@@ -93,7 +93,8 @@ export const getIzinByKaryawan_Id = async (req, res) => {
                     { karyawan_id: karyawan.id },
                     { tipe: "izin" }
                 ]
-            }
+            },
+            order: [["id", "DESC"]], // Menambahkan pengurutan descending
         });
 
         res.status(200).json(response);
@@ -126,7 +127,8 @@ export const getCutiByKaryawan_Id = async (req, res) => {
                     { karyawan_id: karyawan.id },
                     { tipe: "cuti" }
                 ]
-            }
+            },
+            order: [["id", "DESC"]], // Menambahkan pengurutan descending
         });
 
         res.status(200).json(response);

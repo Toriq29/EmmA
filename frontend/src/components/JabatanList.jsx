@@ -46,7 +46,6 @@ const JabatanList = () => {
                             <td>{index + 1}</td>
                             <td>{jabatan.nama_jabatan}</td>
                             <td>
-                                <Link to={``} className='button is-small is-info'>Edit</Link>
                                 <button 
                                     onClick={() => deleteJabatan(jabatan.id)} 
                                     className='button is-small is-danger ml-2'
