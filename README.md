@@ -16,6 +16,12 @@ EmmA adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah pengel
    - Unggah file `tubes_db.sql`.  
    - Klik **Go** untuk memulai proses impor.  
 
+## **Set Up Repository**
+- Clone repository dengan Git atau unduh zip-nya langsung dari GitHub.
+```bash
+git clone https://github.com/Toriq29/EmmA
+cd EmmA
+```
 
 ## **Set Up Aplikasi Backend**
 
