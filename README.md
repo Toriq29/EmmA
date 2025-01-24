@@ -58,6 +58,7 @@ npm start
 ```
 
 ## **Set Up Aplikasi FrontEnd**
+### **1. Instalasi Dependencies**
 1. Buka terminal atau command prompt.
 2. Arahkan ke folder backend aplikasi:
 ```bash
@@ -68,7 +69,7 @@ cd frontend
 npm install
 ```
 
-### **4.  Menjalankan Aplikasi**
+### **2.  Menjalankan Aplikasi**
 1. Untuk menjalankan aplikasi dalam mode pengembangan::
 ```bash
 npm start
