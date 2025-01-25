@@ -4,6 +4,13 @@
 # EmmA (Employee Management)
 EmmA adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah pengelolaan karyawan di dalam perusahaan. Aplikasi ini menyediakan fitur presensi, pengajuan izin, dan pengajuan cuti bagi karyawan dengan alur yang terorganisasi dan terintegrasi.
 
+## **Set Up Repository**
+- Clone repository dengan Git atau unduh zip-nya langsung dari GitHub.
+```bash
+git clone https://github.com/Toriq29/EmmA
+cd EmmA
+```
+
 ## Set Up Basis Data
 1. Pastikan Anda sudah menginstal **XAMPP** atau server lokal lainnya yang memiliki **phpMyAdmin**.  
    - Jika belum, unduh XAMPP di [https://www.apachefriends.org](https://www.apachefriends.org).  
@@ -15,13 +22,6 @@ EmmA adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah pengel
    - Pilih tab **Import**.  
    - Unggah file `tubes_db.sql`.  
    - Klik **Go** untuk memulai proses impor.  
-
-## **Set Up Repository**
-- Clone repository dengan Git atau unduh zip-nya langsung dari GitHub.
-```bash
-git clone https://github.com/Toriq29/EmmA
-cd EmmA
-```
 
 ## **Set Up Aplikasi Backend**
 
