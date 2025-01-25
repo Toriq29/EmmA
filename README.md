@@ -5,7 +5,13 @@
 EmmA adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah pengelolaan karyawan di dalam perusahaan. Aplikasi ini menyediakan fitur presensi, pengajuan izin, dan pengajuan cuti bagi karyawan dengan alur yang terorganisasi dan terintegrasi.
 
 ## **Set Up Repository**
-- Clone repository dengan Git atau unduh zip-nya langsung dari GitHub.
+### 1. Pastikan Git Telah Terpasang  
+Jika Git belum terpasang di perangkat Anda, silakan unduh dan instal terlebih dahulu:  
+
+- **Windows**
+Unduh dan instal Git dari [https://git-scm.com/](https://git-scm.com/).
+  
+### 2. Clone repository dengan Git atau unduh zip-nya langsung dari GitHub.
 ```bash
 git clone https://github.com/Toriq29/EmmA
 cd EmmA
