@@ -44,7 +44,7 @@ Jika versi Node.js dan npm muncul, maka instalasi berhasil.
 
 ### **3. Instalasi Dependencies**
 1. Buka terminal atau command prompt.
-2. Arahkan ke folder backend aplikasi:
+2. Arahkan ke folder backend :
 ```bash
 cd backend
 ```
@@ -66,7 +66,7 @@ npm start
 ## **Set Up FrontEnd**
 ### **1. Instalasi Dependencies**
 1. Buka terminal atau command prompt.
-2. Arahkan ke folder backend aplikasi:
+2. Arahkan ke folder frontend :
 ```bash
 cd frontend
 ```
