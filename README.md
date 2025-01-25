@@ -78,3 +78,13 @@ npm start
 ```bash
 http://localhost:3000
 ```
+
+## **Account**
+1. Admin = username : admin | password : asd12345
+2. Karyawan = username : fabio |  password : asd12345
+3. Supervisor = username : arthur |  password : asd12345
+4. Manager = username : thoriquee |  password : asd12345
+5. HRD = username : youka |  password : asd12345
+
+
+ 
