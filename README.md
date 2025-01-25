@@ -29,7 +29,7 @@ cd EmmA
    - Unggah file `tubes_db.sql`.  
    - Klik **Go** untuk memulai proses impor.  
 
-## **Set Up Aplikasi Backend**
+## **Set Up Backend**
 
 ### **1. Pastikan Node.js Terinstal**
 Jika Node.js belum terinstal, unduh dan instal dari [Node.js Official Website](https://nodejs.org/en).
@@ -63,7 +63,7 @@ npm run dev
 npm start
 ```
 
-## **Set Up Aplikasi FrontEnd**
+## **Set Up FrontEnd**
 ### **1. Instalasi Dependencies**
 1. Buka terminal atau command prompt.
 2. Arahkan ke folder backend aplikasi:
