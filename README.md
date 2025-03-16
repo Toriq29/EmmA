@@ -1,5 +1,6 @@
 #### NRP   : 2172019
 #### Nama  : Thoriq Hdayansyah
+#### Link Demo YouTube : https://www.youtube.com/watch?v=oHhBnfMdD7Q
 
 # EmmA (Employee Management)
 EmmA adalah sebuah aplikasi berbasis web yang dirancang untuk mempermudah pengelolaan karyawan di dalam perusahaan. Aplikasi ini menyediakan fitur presensi, pengajuan izin, dan pengajuan cuti bagi karyawan dengan alur yang terorganisasi dan terintegrasi.
